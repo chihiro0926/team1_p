@@ -19,7 +19,7 @@
             <div class="center h2_margin">
                 <h2 class="signin_h2">회원가입</h2>
             </div>
-            <form action="signin">
+            <form action="signin" method="post">
                 <div class="signin_input_big_box">
                     <div class="signin_input_text">
                         <div class="input_name"><span class="signin_text_title">아이디</span><span

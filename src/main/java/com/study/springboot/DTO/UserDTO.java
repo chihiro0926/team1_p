@@ -1,4 +1,4 @@
-package com.study.springboot;
+package com.study.springboot.DTO;
 
 public class UserDTO {
 	String id;
