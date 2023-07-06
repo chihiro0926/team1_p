@@ -25,7 +25,11 @@
                         <div class="input_name"><span class="signin_text_title">아이디</span><span
                                 class="red_star">*</span>
                         </div>
-                        <div><input type="text" name="id" placeholder="아이디" class="input_base signin_lb"></div>
+						<div class="input_id">
+							<input type="text" name="id" placeholder="아이디" class="input_base signin_lb">
+	                        <div class="id_check_ok">사용 가능한 아이디 입니다.</div>
+	                        <div class="id_check_no">이미 사용중인 아이디 입니다.</div>
+                        </div>
                     </div>
                     <div>
                         <div class="input_name"><span class="signin_text_title">비밀번호</span><span

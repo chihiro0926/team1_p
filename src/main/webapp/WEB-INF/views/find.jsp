@@ -220,25 +220,34 @@
 
                 if (input_ij[0].value.length == 13) {
                     err[0].style.display = "block";
-                    input_ij[0].readOnly = true;
                 } else {
                     alert("전화번호가 올바르게 입력되지 않았습니다.");
                     err[0].style.display = "none";
                 };
 
             });
+            
 
             // 이메일 인증요청
             btn1[1].addEventListener("click", function () {
 
                 if (input_ij[1].value.indexOf("@") != -1) {
                     err[1].style.display = "block";
-                    input_ij[1].readOnly = true;
                 } else {
                     alert("이메일 양식이 올바르지 않습니다")
                     err[1].style.display = "none"
                 }
             })
+            
+            for( let i=0; i<input_ij.length; i++) {
+            	input_ij[i].addEventListener("input", function() {
+					
+            		if( err[i].style.display = "block"){
+            			err[i].style.display = "none"
+            		}
+            	})
+            }
+            
 
             let form1 = document.querySelector(".form1")
             let form_btn1 = document.querySelector(".find_id_btn")

@@ -29,7 +29,7 @@
             </div>
             <div class="int-area">
                 <!-- 비밀번호 입력 창 -->
-                <input type="password" name="PW" id="PW" autocomplete="off" placeholder="비밀번호" required>
+                <input type="password" name="psw" id="psw" autocomplete="off" placeholder="비밀번호" required>
                 <label for="id" style="font-size: 1.8em; font-family: 'NanumSquareAcl';"></label>
             </div>
             <div class="msg">

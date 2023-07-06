@@ -36,6 +36,90 @@ for(let i = 0; i < btn_all.length; i++) {
     });
 };
 
+//	// 아이디 중복체크
+//	let id_chk = document.querySelector("#id_chk")
+//	id_chk.addEventListener("click", function(event) {
+//		let id = document.querySelector("[name='id']");
+//		let id_val = id.value
+//		
+//		let id_ok = document.querySelector(".id_check_ok")
+//		let id_no = document.querySelector(".id_check_no")
+//		
+//		console.log("event.target", event.target)
+//		console.log("id 값", id_val)
+//		
+//		// ajax 객체 생성
+//		const xhr = new XMLHttpRequest();
+//		
+//		// 보낼 준비
+//		let url = "/idCheck";
+//		xhr.open("POST", url);
+//		xhr.setRequestHeader("Content-Type", "application/json");
+//		
+//		let param = {
+//			id: id_val
+//		}
+//		console.log("param :", param)
+//		
+//		xhr.send(JSON.stringify(param));
+//		
+//		// 다녀오는게 끝났을때
+//		xhr.onload = function() {
+//			console.log(xhr.responseText);
+//			
+//			if( Number(xhr.responseText) == 0) {
+//				id_ok.style.display = "block"
+//				id_no.style.display = "none"
+//				id.readOnly = true;
+//			} else {
+//				id_no.style.display = "block"
+//				id_ok.style.display = "none"
+//			}
+//		}
+//		
+//	})
+	
+	// 아이디 중복체크
+	let id = document.querySelector("[name='id']");
+	id.addEventListener("input", function(event) {
+		let id_val = id.value
+		
+		let id_ok = document.querySelector(".id_check_ok")
+		let id_no = document.querySelector(".id_check_no")
+		
+		console.log("event.target", event.target)
+		console.log("id 값", id_val)
+		
+		// ajax 객체 생성
+		const xhr = new XMLHttpRequest();
+		
+		// 보낼 준비
+		let url = "/idCheck";
+		xhr.open("POST", url);
+		xhr.setRequestHeader("Content-Type", "application/json");
+		
+		let param = {
+			id: id_val
+		}
+		console.log("param :", param)
+		
+		xhr.send(JSON.stringify(param));
+		
+		// 다녀오는게 끝났을때
+		xhr.onload = function() {
+			console.log(xhr.responseText);
+			
+			if( Number(xhr.responseText) == 0) {
+				id_ok.style.display = "block"
+				id_no.style.display = "none"
+			} else {
+				id_no.style.display = "block"
+				id_ok.style.display = "none"
+			}
+		}
+		
+	})
+
     // 비밀번호 숨기기/보이기
     let btn7 = document.querySelector("#icon")
     btn7.addEventListener("click", function(){
@@ -190,13 +274,25 @@ for(let i = 0; i < btn_all.length; i++) {
             alert("이메일 양식이 올바르지 않습니다");
         };
     });
+    
+    // 중복확인 및 인증요청을 완료한 상태에서 input창을 수정했을 경우 중복확인 및 인증요청 숨기기
+    let ok = document.querySelectorAll(".ok");
+    let ok2 = document.querySelectorAll(".ok2");
+    
+    for( let i=0; i<ok2.length; i++ ) {
+		ok2[i].addEventListener("input", function() {
+			if( ok[i].style.display = "block" ){
+				ok[i].style.display = "none"
+			}
+		})
+	}
 
     // 가입하기 버튼 
     let signin_lb = document.querySelectorAll(".signin_lb");
     let signin_lb1 = document.querySelectorAll(".signin_lb1");
     let signin_lb2 = document.querySelectorAll(".sm_psw");
-    let ok = document.querySelectorAll(".ok");
-    let ok2 = document.querySelectorAll(".ok2");
+    
+    let id_ok = document.querySelector(".id_check_ok")
     console.log(signin_lb);
     console.log(signin_lb1);
     console.log(signin_lb2);
@@ -217,6 +313,14 @@ for(let i = 0; i < btn_all.length; i++) {
         let is = true
         let is2 = true
         let is3 = true
+        
+        if(id_ok.style.display != "block"){
+			id.style = "border: 1px solid #C80808;"
+			id.focus();
+			alert("아이디를 확인해주세요")
+			return;
+		}
+        
         for(let i = 0; i < signin_lb.length; i++) {
             // let slVal = signin_lb[i].value
             // let slVal_lt = slVal.length

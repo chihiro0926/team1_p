@@ -34,6 +34,9 @@
     padding-top: 0.6em;
     outline: none;
 }
+.input_id {
+	position: relative;
+}
 .han {
     position: relative;
 }
@@ -106,6 +109,20 @@
     padding-bottom: 1em;
     display: none;
     color: #c80808;
+}
+.id_check_ok {
+	margin-top: 0.5em;
+    padding-bottom: 1em;
+    color: #C80808;
+    font-family: 'NanumSquare';
+    display: none;
+}
+.id_check_no {
+	margin-top: 0.5em;
+    padding-bottom: 1em;
+    color: #C80808;
+    font-family: 'NanumSquare';
+    display: none;
 }
 .signin_text_title{
     font-family: 'NanumSquare';

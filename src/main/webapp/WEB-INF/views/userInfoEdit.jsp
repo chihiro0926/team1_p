@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -234,7 +235,7 @@
                         </div>
                         <div class="user_info_mini_title">
                             <span>생년월일</span>
-                            <span><input class="input_base" name="birth_date" maxlength="10" oninput="autoHyphen2(this)" type="text" value="${userDTO.birth_date }"></span>
+                            <span><input class="input_base" name="birth_date" maxlength="10" oninput="autoHyphen2(this)" type="text" value="<fmt:formatDate pattern="yyyy-MM-dd" value="${userDTO.birth_date }"/>"></span>
                         </div>
                         <div class="user_info_mini_title">
                             <span>이메일</span>
