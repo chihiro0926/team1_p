@@ -17,6 +17,7 @@ public class UserDTO {
 	private Date birth_date;
 	private String phoneNum;
 	private Date join_date;
+	private String contact;
 	
 	
 	

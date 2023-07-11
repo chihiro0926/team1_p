@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원정보확인</title>
+<link rel="stylesheet" href="/header/blackheader.css">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet"> 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -190,6 +191,84 @@
         }
 </style>
 </head>
+<header>
+
+        <div id="header">
+            <div id="logo2">
+                <div><a href=""><img src="/header/logo2.png" alt=""></a></div>
+            </div>
+            <div id="search2">
+                <input type="text" placeholder="여름 준비, 지금부터!">
+                <!--
+                    1. 여름 준비, 지금부터!
+                    2. 올 여름, 나의 휴가패션은?
+                    3. 우리 아이, 유치원 인싸템
+                    4. 인싸들의 OOTD
+                    5. 지름신 강림! flex템!
+                -->
+                
+                <a href=""><img src="/header/search_regular_icon.png" alt="" style="width: 2em;"></a>
+            </div>
+        <div id="logout">
+            <div><a href="">로그아웃</a></div>
+            <div><a>ㅣ</a></div>
+            <div><a href="">마이페이지</a></div>
+            <div><a>ㅣ</a></div>
+            <div><a href="">장바구니</a></div>
+        </div>
+        
+        
+        <div id="menu2">
+            <div><a href="" class="best_menu2">BEST</a></div>
+            <div><a href="" class="women_menu2">WOMEN</a></div>
+            <div><a href="" class="men_menu2">MEN</a></div>
+            <div><a href="" class="kids_menu2">KIDS</a></div>
+            <div><a href="" class="beauty_menu2">BEAUTY</a></div>
+        </div>
+        
+        
+        <div id="all2">
+            <div id="mid2">
+                <div id="best2">
+                    <div><a href="">상의</a></div>
+                    <div><a href="">하의</a></div>
+                    <div><a href="">아우터</a></div>
+                    <div><a href="">니트웨어</a></div>
+                    <div><a href="">이너웨어</a></div>
+                </div>
+                <div id="women2">
+                    <div><a href="">상의</a></div>
+                    <div><a href="">원피스</a></div>
+                    <div><a href="">바지</a></div>
+                    <div><a href="">스커트</a></div>
+                    <div><a href="">아우터</a></div>
+                    <div><a href="">니트웨어</a></div>
+                    <div><a href="">이너웨어</a></div>
+                </div>
+                <div id="men2">
+                    <div><a href="">상의</a></div>
+                    <div><a href="">하의</a></div>
+                    <div><a href="">아우터</a></div>
+                    <div><a href="">니트웨어</a></div>
+                    <div><a href="">이너웨어</a></div>
+                </div>
+                <div id="kids2" style="left: -3.3em;">
+                    <div><a href="">의류</a></div>
+                    <div><a href="">신발</a></div>
+                    <div><a href="">가방</a></div>
+                </div>
+                <div id="beauty2" style="left: -2.5em;">
+                    <div><a href="">스킨케어</a></div>
+                    <div><a href="">메이크업</a></div>
+                    <div><a href="">향수</a></div>
+                    <div><a href="">바디케어</a></div>
+                    <div><a href="">헤어케어</a></div>
+                    <div><a href="">남성뷰티</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
 <body>
 	<div id="all_section">
         <div id="top_section">
@@ -268,7 +347,10 @@
                 <div class="out">
                     <div class="out_check">
                         <div class="out_chk2">회원 탈퇴를 원하시면 아래에 비밀번호를 입력해주세요.</div>
-                        <div class="out_chk_pw"><input class="chk_pw" type="password" name="chk_pw" placeholder="비밀번호"></div>
+                        <div class="out_chk_pw">
+                        	<input class="chk_pw" type="password" name="chk_pw" placeholder="비밀번호">
+                        	<input class="id" type="hidden" name="id" value=${userDTO.id }>
+                        </div>
                     </div>
                     <div>
                     	<c:if test="${msg3 != null }">
@@ -282,5 +364,164 @@
     </div>
     <script src="../js/userInfoEdit.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script>
+	    /*-----------------------------------------------------------------------------------------*/
+	    $(function() {
+		    $('#menu2').hide();
+		    $('#mid2').hide();
+		
+		    var menu2Timeout; // Declare a variable to store the timeout for menu2
+		
+		    $('#header').hover(function() {
+		        var menu2 = $(this).parent().find('#menu2');
+		        var mid2 = $(this).parent().find('#mid2');
+		        clearTimeout(menu2Timeout); // Clear the timeout for menu2
+		        menu2.slideDown(300);
+		        mid2.hide();
+		    }, function() {
+		        var header = $(this);
+		        var menu2 = header.parent().find('#menu2');
+		        var mid2 = header.parent().find('#mid2');
+		        menu2Timeout = setTimeout(function() {
+		            if (!menu2.is(':hover') && !mid2.is(':hover')) {
+		                mid2.slideUp(300);
+		                menu2.slideUp(300);
+		            } else if (!mid2.is(':hover')) {
+		                mid2.slideUp(300);
+		            }
+		        }, 300);
+		    });
+		
+		    $('#menu2').hover(function() {
+		        clearTimeout(menu2Timeout); // Clear the timeout for menu2
+		        $(this).parent().find('#mid2').slideDown(300);
+		    }, function() {
+		        var header = $(this).closest('#header');
+		        var mid2 = header.find('#mid2');
+		        var menu2 = header.find('#menu2');
+		        menu2Timeout = setTimeout(function() {
+		            if (!mid2.is(':hover')) {
+		                mid2.slideUp(300);
+		            }
+		        }, 300);
+		    });
+		
+		    $('#mid2').mouseenter(function() {
+		        clearTimeout(menu2Timeout); // Clear the timeout for menu2
+		    });
+		
+		    $('#mid2').mouseleave(function() {
+		        var mid2 = $(this);
+		        var menu2 = mid2.parent().find('#menu2');
+		        mid2.slideUp(300);
+		        menu2.slideUp(300);
+		    });
+		});
+	
+	    const bestMenu2 = document.querySelector(".best_menu2");
+	    const bestSubMenu2 = document.querySelector("#best2");
+	
+	    bestSubMenu2.addEventListener("mouseover", function() {
+	     bestMenu2.style.borderBottom = "0.2em solid #C80808";
+	    });
+	
+	    bestSubMenu2.addEventListener("mouseout", function() {
+	    bestMenu2.style.borderBottom = "none";
+	    });
+	
+	    bestMenu2.addEventListener("mouseover", function() {
+	    bestMenu2.style.borderBottom = "0.2em solid #C80808";
+	    });
+	    bestMenu2.addEventListener("mouseout", function() {
+	    bestMenu2.style.borderBottom = "none";
+	    });
+	
+	    const womenMenu2 = document.querySelector(".women_menu2");
+	    const womenSubMenu2 = document.querySelector("#women2");
+	
+	    womenSubMenu2.addEventListener("mouseover", function() {
+	    womenMenu2.style.borderBottom = "0.2em solid #C80808";
+	    });
+	
+	    womenSubMenu2.addEventListener("mouseout", function() {
+	    womenMenu2.style.borderBottom = "none";
+	    });
+	
+	    womenMenu2.addEventListener("mouseover", function() {
+	    womenMenu2.style.borderBottom = "0.2em solid #C80808";
+	    });
+	
+	    womenMenu2.addEventListener("mouseout", function() {
+	    womenMenu2.style.borderBottom = "none";
+	    });
+	
+	    const menMenu2 = document.querySelector(".men_menu2");
+	    const menSubMenu2 = document.querySelector("#men2");
+	
+	    menSubMenu2.addEventListener("mouseover", function() {
+	    menMenu2.style.borderBottom = "0.2em solid #C80808";
+	    });
+	
+	    menSubMenu2.addEventListener("mouseout", function() {
+	    menMenu2.style.borderBottom = "none";
+	    });
+	
+	    menMenu2.addEventListener("mouseover", function() {
+	    menMenu2.style.borderBottom = "0.2em solid #C80808";
+	    });
+	
+	    menMenu2.addEventListener("mouseout", function() {
+	    menMenu2.style.borderBottom = "none";
+	    });
+	
+	    const kidsMenu2 = document.querySelector(".kids_menu2");
+	    const kidsubMenu2 = document.querySelector("#kids2");
+	
+	    kidsubMenu2.addEventListener("mouseover", function() {
+	    kidsMenu2.style.borderBottom = "0.2em solid #C80808";
+	    });
+	
+	    kidsubMenu2.addEventListener("mouseout", function() {
+	    kidsMenu2.style.borderBottom = "none";
+	    });
+	
+	    kidsMenu2.addEventListener("mouseover", function() {
+	    kidsMenu2.style.borderBottom = "0.2em solid #C80808";
+	    });
+	
+	    kidsMenu2.addEventListener("mouseout", function() {
+	    kidsMenu2.style.borderBottom = "none";
+	    });
+	
+	    const beautyMenu2 = document.querySelector(".beauty_menu2");
+	    const beautyubMenu2 = document.querySelector("#beauty2");
+	
+	    beautyubMenu2.addEventListener("mouseover", function() {
+	    beautyMenu2.style.borderBottom = "0.2em solid #C80808";
+	    });
+	
+	    beautyubMenu2.addEventListener("mouseout", function() {
+	    beautyMenu2.style.borderBottom = "none";
+	    });
+	
+	    beautyMenu2.addEventListener("mouseover", function() {
+	    beautyMenu2.style.borderBottom = "0.2em solid #C80808";
+	    });
+	
+	    beautyMenu2.addEventListener("mouseout", function() {
+	    beautyMenu2.style.borderBottom = "none";
+	    });
+	    
+	    
+	</script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+

@@ -1,7 +1,5 @@
 package com.study.springboot.controller;
 
-import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.study.springboot.DTO.UserDTO;
@@ -84,7 +81,7 @@ public class MypageController {
 		String login = (String) session.getAttribute("login");
 		
 		if( login == null || !(login == "ok") ) {
-			return "login";
+			return "user/login";
 		}
 		
 		int user_id = (int) session.getAttribute("user_id");
@@ -96,7 +93,7 @@ public class MypageController {
 		
 		model.addAttribute("userDTO", userDTO);
 		
-		return "userInfoEdit";
+		return "user/userInfoEdit";
 	}
 	
 	
@@ -155,7 +152,7 @@ public class MypageController {
 //			model.addAttribute("message", "이미 사용중인 아이디 입니다.");
 //			return "signin1";
 //		}
-		return "login";	
+		return "user/login";	
 		
 	}
 	
@@ -177,19 +174,19 @@ public class MypageController {
 	@RequestMapping("/signin1")
 	public String signin1() {
 		
-		return "signin1";
+		return "user/signin1";
 	}
 	
-	@RequestMapping("/test")
-	public String test() {
-		
-		return "test";
-	}
+//	@RequestMapping("/test")
+//	public String test() {
+//		
+//		return "test";
+//	}
 	
 	@RequestMapping("/login")
 	public String login() {
 		
-		return "login";
+		return "user/login";
 	}
 	
 //	1차 프로젝트
@@ -285,13 +282,14 @@ public class MypageController {
 			// 계정 있음
 			HttpSession session = request.getSession();
 			session.setAttribute("login", "ok");
+//			session.setAttribute("userDTO", dto);
 			if( dto != null ) {
 				session.setAttribute("user_id", dto.getUser_id());
 			}
 		} else {
 			// 계정 없음
 			model.addAttribute("msg", "아이디 및 비밀번호를 확인해주세요");
-			return "login";
+			return "user/login";
 		}
 		
 		return "redirect:/userInfoEdit";
@@ -300,7 +298,7 @@ public class MypageController {
 	@RequestMapping("/find")
 	public String find() {
 		
-		return "find";
+		return "user/find";
 	}
 	
 	
@@ -347,18 +345,99 @@ public class MypageController {
 			UserDTO userDTO,
 			HttpServletRequest request
 	) {
-		String name = request.getParameter("phone_name");
-		String phone = request.getParameter("phone");
+		String contact = request.getParameter("contact");
+		System.out.println("contact : "+ contact);
 		
-		userDTO.setName(name);
-		userDTO.setPhoneNum(phone);
+		userDTO.setContact(contact);
 		
+		if( contact.equals("phone") ) {
+			String name = request.getParameter("phone_name");
+			String phone = request.getParameter("phone");
+			
+			userDTO.setName(name);
+			userDTO.setPhoneNum(phone);
+		} else if ( contact.equals("email") ) {
+			String mailName = request.getParameter("email_name");
+			String email = request.getParameter("email");
+			
+			userDTO.setName(mailName);
+			userDTO.setMail(email);
+		}
 		
 		userDTO = userService.findId(userDTO);
+		System.out.println("select 결과 : "+ userDTO);
+		
+		if ( userDTO == null ) {
+			
+			model.addAttribute("msg2", "일치하는 회원 정보가 없습니다");
+			
+			return "user/find";
+		}
 		
 		model.addAttribute("userDTO", userDTO);
 		
-		return "find_id";
+		return "user/find_id";
+	}
+	
+	@RequestMapping(value="findPw", method=RequestMethod.POST)
+	public String findPw(
+			HttpServletRequest request,
+			UserDTO userDTO,
+			Model model
+	) {
+		String id = request.getParameter("pw_id");
+		String phone = request.getParameter("pw_phone");
+		
+		userDTO.setId(id);
+		userDTO.setPhoneNum(phone);
+		
+		userDTO = userService.findId(userDTO);
+		System.out.println("select 결과 : "+ userDTO);
+		
+		if( userDTO == null ) {
+			model.addAttribute("msg2", "일치하는 회원 정보가 없습니다");
+			
+			return "user/find";
+		}
+		
+		model.addAttribute("userDTO", userDTO);
+		
+		return "user/newPw";
+	}
+	
+	// 비밀번호 재설정
+	@RequestMapping("/newPw")
+	public String find_pw(
+			UserDTO userDTO
+	) {
+		System.out.println("userDTO : "+ userDTO.getId());
+		
+		if( userDTO.getId() == null ) {
+			
+			return "user/find";
+		}
+		
+		return "user/newPw";
+	}
+		
+	// 비밀번호 업데이트
+	@RequestMapping(value="/updatePw", method=RequestMethod.POST)
+	public String updatePw(
+			HttpServletRequest request,
+			UserDTO userDTO
+	) {
+		String id = request.getParameter("id");
+		String newPw = request.getParameter("psw");
+		System.out.println("비밀번호 재설정 할 id : "+ id);
+		System.out.println("새로 설정한 비밀번호 : "+ newPw);
+		
+		userDTO.setId(id);
+		userDTO.setPsw(newPw);
+		
+		int result = userService.updatePw(userDTO);
+		System.out.println("비밀번호 재설정 : "+ result);
+		
+		return "redirect:/login";
 	}
 	
 	// 1차 프로젝트 회원정보수정
@@ -407,34 +486,79 @@ public class MypageController {
 		return "redirect:/userInfoEdit";
 	}
 	
-	@RequestMapping("/user_out")
-	public String user_out(
-				UserDTO userDTO,
-				
-				HttpServletRequest request,
-				
-				@RequestParam("chk_pw") String chk_pw,
-				
-				Model model
-		) {
-			HttpSession session = request.getSession();
-			session.getAttribute("userDTO");
-			
-			String nextPage = null;
-			
-			String pw = userDTO.getPsw();
-			
-			if(chk_pw.equals(pw)) {
-				session.invalidate();
-				model.addAttribute("msg", "회원탈퇴가 정상적으로 처리되었습니다.");
-				nextPage = "login";
-			} else {
-				model.addAttribute("msg3", "비밀번호가 일치하지 않습니다");
-				model.addAttribute("userDTO", userDTO);
-				nextPage = "userInfoEdit";
-			}
-			
-			return nextPage;
+	// 1차 프로젝트 회원탈퇴
+//	@RequestMapping("/user_out")
+//	public String user_out(
+//				UserDTO userDTO,
+//				
+//				HttpServletRequest request,
+//				
+//				@RequestParam("chk_pw") String chk_pw,
+//				
+//				Model model
+//		) {
+//			HttpSession session = request.getSession();
+////			UserDTO userDTO1 = (UserDTO) session.getAttribute("userDTO");
+////			System.out.println("userDTO : "+ userDTO1);
+//			
+//			String nextPage = null;
+//			
+////			String pw = userDTO1.getPsw();
+//			String pw = userDTO.getPsw();
+//			
+//			if(chk_pw.equals(pw)) {
+//				session.invalidate();
+//				model.addAttribute("msg", "회원탈퇴가 정상적으로 처리되었습니다.");
+//				nextPage = "user/login";
+//			} else {
+//				model.addAttribute("msg3", "비밀번호가 일치하지 않습니다");
+////				model.addAttribute("userDTO", userDTO1);
+//				nextPage = "user/userInfoEdit";
+//			}
+//			
+//			return nextPage;
+//	}
+	
+	
+	// 회원탈퇴 비밀번호 확인 ajax
+	@RequestMapping("/pwCheck")
+	@ResponseBody
+	public int pwCheck(
+			@RequestBody UserDTO userDTO
+	) {
+		System.out.println("pwCheck_id : "+ userDTO.getId());
+		System.out.println("pwCheck_psw : "+ userDTO.getPsw());
+		
+		int pwChkResult = userService.pwCheck(userDTO);
+		System.out.println("pwChkResult : "+ pwChkResult);
+		
+		return pwChkResult;
 	}
 	
+	@RequestMapping("/withdrawal")
+	public String withdrawal(
+			HttpServletRequest request,
+			UserDTO userDTO
+	) {
+		HttpSession session = request.getSession();
+		int user_id = (int) session.getAttribute("user_id");
+		System.out.println("탈퇴할 회원 id : "+ user_id);
+		
+		int result = userService.deleteUser(user_id);
+		session.invalidate();
+		System.out.println("회원 탈퇴 결과 : "+ result);
+		
+		return "user/login";
+	}
+	
+	
 }
+
+
+
+
+
+
+
+
+

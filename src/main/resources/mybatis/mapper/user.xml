@@ -108,12 +108,42 @@
 	
 	<select id="findId" parameterType="userDTO" resultType="userDTO">
 		select
+			user_id,
 			id
 		from
 			user_list
-		where
-			name = #{name} and phone_num = #{phoneNum}
+		<where>
+			<choose>
+				<when test=" contact == 'phone' and phoneNum != null " >
+					name = #{name} and phone_num = #{phoneNum}
+				</when>
+				<when test=" contact == 'email' and mail != null " >
+					name = #{name} and email = #{mail}
+				</when>
+				<otherwise>
+					id = #{id} and phone_num = #{phoneNum}
+				</otherwise>
+			</choose>
+		</where>
 	</select>
+	
+	<update id="updatePw" parameterType="userDTO">
+		update 
+			user_list
+		set
+			pw = #{psw}
+		where
+			id = #{id}
+		
+	</update>
+	
+	<delete id="deleteUser" parameterType="int">
+		DELETE
+		FROM
+			user_list
+		WHERE
+			user_id = #{user_id}
+	</delete>
 	
 </mapper>
 

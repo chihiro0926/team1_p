@@ -78,9 +78,7 @@
                             </div>
                     </form>
                 </div>
-
-                <br>
-                <div>
+                <div class="msg">
                 	<c:if test="${msg2 != null }">
                 		<div>${msg2 }</div>
                 	</c:if>
@@ -100,8 +98,8 @@
                     <p>비밀번호 찾기</p>
 
                     <div>
-                        <button class="tablinks_active" onclick="openTab(event,'id')">아이디 찾기</button><button
-                            class="tablinks" onclick="opentab(event,'pw')">비밀번호 찾기</button>
+                        <button class="tablinks_active" onclick="openTab(event,'id')">아이디 찾기</button><button 
+		                        class="tablinks" onclick="opentab(event,'pw')">비밀번호 찾기</button>
                     </div>
 
                     <!-- 비밀번호 찾기 폼 -->
@@ -109,30 +107,33 @@
                     <div class="find_pw">
                         <p>비밀번호 찾기를 위한 아이디를 입력해주세요.</p>
                     </div>
-                    <form action="findPw">
+                    <form class="form2" action="findPw" method="post">
                         <div class="pwfind_text">
                             <div>
-                                <input type="text" name="pw_id" id="pw" placeholder="아이디">
-                                <div class="pwfind_error">
-                                    <br>
-                                    <p>입력하신 아이디를 찾을 수 없습니다.
-                                        <br>
-                                        기억나지않으시면 아이디 찾기를 먼저 진행해 주세요.
-                                    </p>
-                                </div>
+                                <input type="text" name="pw_id" id="pw_id" placeholder="아이디">
+<!--                                 <div class="pwfind_error"> -->
+<!--                                     <br> -->
+<!--                                     <p>입력하신 아이디를 찾을 수 없습니다. -->
+<!--                                         <br> -->
+<!--                                         기억나지않으시면 아이디 찾기를 먼저 진행해 주세요. -->
+<!--                                     </p> -->
+<!--                                 </div> -->
                             </div>
-                            <!-- <div>
-                                <input type="text" class="input_ij chk1" name="phone" id="phone" maxlength="13"
+							<div class="input_phone">
+                                <input type="text" class="input_ij chk1" name="pw_phone" id="pw_phone" maxlength="13"
                                         oninput="autoHyphen(this)" placeholder="휴대전화(-없이)">
                                     <input class="authentication_request1" type="button" name="name" value="인증요청">
-                                    <div class="request_error">
+                                    <div class="request_error err">
                                         <a id="error">인증되었습니다.</a>
                                     </div>
-                                
-                            </div> -->
+<!--                                     <div class="msg"> -->
+<%-- 					                	<c:if test="${msg3 != null }"> --%>
+<%-- 					                		<div>${msg3 }</div> --%>
+<%-- 					                	</c:if> --%>
+<!-- 					                </div> -->
+                            </div> 
                         </div>
                     </form>
-                    <br>
                     <div class="run2">
                         <button onclick="myFunction()">비밀번호 찾기</button>
                     </div>
@@ -144,7 +145,15 @@
 
         <script>
             function myFunction() {
-                alert("Hello!");
+            	let pw_id = document.querySelector("#pw_id")
+            	let err = document.querySelector(".err")
+            	let form2 = document.querySelector(".form2")
+            	
+            	if( pw_id.value.length == 0 || err.style.display != "block" ){
+            		alert("빈 항목이 있거나 인증을 완료하지 않았습니다")
+            	} else {
+            		form2.submit();
+            	}
             }
 
             // 아이디 찾기, 비밀번호 찾기 탭 전환
@@ -167,6 +176,12 @@
                 // 선택한 탭의 내용을 표시하고, 선택한 탭 버튼에 'active' 클래스 추가
                 document.getElementById(tabName).style.display = "block";
                 evt.currentTarget.className += " active";
+                
+                // 탭 전환시 입력한 모든 값 초기화
+                let input = document.querySelectorAll("input[type='text']")
+                for (let i=0; i<input.length; i++){
+                	input[i].value = "";
+                }
             }
 
             function showHideElements() {
@@ -211,7 +226,7 @@
 
             // });
 
-            // 전화번호 인증요청
+            // 아이디 찾기 전화번호 인증요청
             let btn1 = document.querySelectorAll(".authentication_request1")
             let err = document.querySelectorAll(".request_error")
             let input_ij = document.querySelectorAll(".input_ij")
@@ -223,6 +238,18 @@
                 } else {
                     alert("전화번호가 올바르게 입력되지 않았습니다.");
                     err[0].style.display = "none";
+                };
+
+            });
+            
+         	// 비밀번호 찾기 전화번호 인증요청
+            btn1[2].addEventListener("click", function () {
+
+                if (input_ij[2].value.length == 13) {
+                    err[2].style.display = "block";
+                } else {
+                    alert("전화번호가 올바르게 입력되지 않았습니다.");
+                    err[2].style.display = "none";
                 };
 
             });

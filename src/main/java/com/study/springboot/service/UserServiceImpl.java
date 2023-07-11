@@ -77,4 +77,34 @@ public class UserServiceImpl implements UserService {
 		return result;
 	}
 
+	@Override
+	public int updatePw(UserDTO userDTO) {
+		
+		int result = userDAO.updatePw(userDTO);
+		
+		return result;
+	}
+
+	@Override
+	public int pwCheck(UserDTO userDTO) {
+
+		int result = -1;
+		
+		int countId = userDAO.loginCheck(userDTO);
+		
+		if( countId == 1 ) {
+			result = countId;
+		}
+		
+		return result;
+	}
+
+	@Override
+	public int deleteUser(int user_id) {
+		
+		int result = userDAO.deleteUser(user_id);
+		
+		return result;
+	}
+
 }

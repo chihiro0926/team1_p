@@ -1,11 +1,5 @@
-@charset "UTF-8";
-
 /* 이 CSS 코드는 로그인 폼을 가운데 정렬시키고, 입력창과 버튼 디자인을 구성하는 코드입니다. */
 * {margin: 0; padding: 0; box-sizing: border-box;}
-
-.logo {
-	height: 150px;
-}
 
 /* body 태그의 스타일을 설정합니다. 폰트는 Noto Sans KR을 사용하며, 전체 화면을 가득 채우는 display: flex 속성을 주어 중앙 정렬을 시킵니다. 배경 색상은 흰색으로, 배경 이미지의 크기는 cover로 설정합니다. */
 body {
@@ -85,15 +79,10 @@ transform 속성에 top과 .5s ease를 지정하여, 레이블이 위에서 아�
 .int-area input:valid + label {
     display: none;
 }
-/* 에러 메시지 */
-.msg {
-	text-align: center;
-	color: #C80808;
-	margin-top: 15px;
-}
 /* 로그인 버튼 */
-.btn-area {margin-top: 30px;}
+/* .btn-area {margin-top: 30px;} */
 .btn-area button {
+    margin-top: 20px;
     width: 400px; height: 50px;
     background: #262626;
     color: white;
@@ -252,4 +241,10 @@ ul, li {list-style:none;}
     height: 300px;
     flex-shrink: 0;
     transition: left 0.15s;
+  }
+  
+  /* 에러메시지 */
+  .msg {
+  	color: #c80808;
+  	margin-top: 20px;
   }

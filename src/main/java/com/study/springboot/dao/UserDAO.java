@@ -19,4 +19,8 @@ public interface UserDAO {
 	int updateUser(UserDTO userDTO);
 	
 	UserDTO findId(UserDTO userDTO);
+	
+	int updatePw(UserDTO userDTO);
+	
+	int deleteUser(int user_id);
 }

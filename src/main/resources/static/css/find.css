@@ -122,6 +122,14 @@ header img {
     font-family: 'NanumSqueareLight';
 }
 
+/* 에러 메시지 */
+.msg{
+	color: #C80808;
+	margin-bottom: 10px;
+	margin-left: 40px;
+	font-size: 13px;
+}
+
 /* 탭 내용 스타일 */
 .tabcontent:not(#id) {
     display: none;
@@ -165,6 +173,10 @@ input[type="text"] {
     width: 19.5em;
 }
 
+.run1{
+	text-align: center;
+}
+
 /* 실행 버튼 스타일 */
 .run1 button {
     padding: 1em;
@@ -175,7 +187,7 @@ input[type="text"] {
     border-width: 0;
 }
 .run2 button{
-    margin-top: 7.7em;
+    margin-top: 1.7em;
     padding: 1em;
     width: 20em;
     background-color: #262626;
@@ -222,4 +234,14 @@ input[type=button]{
     text-align: left;
     margin-left: 3em;
     /* display: none; */
+}
+
+.input_phone{
+	margin-top: 20px;
+}
+
+.err{
+	text-align: left;
+    margin-left: 23px;
+    margin-top: 5px;
 }

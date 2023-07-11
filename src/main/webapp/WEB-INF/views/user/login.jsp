@@ -12,9 +12,9 @@
 <body>
 	<section class="login-form">
         <!-- 이미지 삽입 -->
-        <div class="logo" style="text-align: center; margin-top: 6em;">
+        <div class="logo" style="text-align: center; margin-top: 2em;">
             <a href="">
-                <img src="/image/logo1.png" alt="example image" style="width: 400px;">
+                <img src="/image/logo1.png" alt="example image" style="width: 200px;">
             </a>
         </div>
         <br>
@@ -114,7 +114,7 @@
         //
         let offset = slideWidth + currSlide;
         slideItems.forEach((i) => {
-            i.setAttribute("style", `left: ${-offset}px`);
+            i.setAttribute("style", `left: \${-offset}px`);
         });
 
         function nextMove() {
@@ -125,7 +125,7 @@
                 const offset = slideWidth * currSlide;
                 // 각 슬라이드 아이템의 left에 offset 적용
                 slideItems.forEach((i) => {
-                    i.setAttribute("style", `left: ${-offset}px`);
+                    i.setAttribute("style", `left: \${-offset}px`);
                 });
                 // 슬라이드 이동 시 현재 활성화된 pagination 변경
                 paginationItems.forEach((i) => i.classList.remove("active"));
@@ -135,7 +135,7 @@
                 currSlide = 0;
                 let offset = slideWidth * currSlide;
                 slideItems.forEach((i) => {
-                    i.setAttribute("style", `transition: ${0}s; left: ${-offset}px`);
+                    i.setAttribute("style", `transition: ${0}s; left: \${-offset}px`);
                 });
                 currSlide++;
                 offset = slideWidth * currSlide;
@@ -143,8 +143,8 @@
                 setTimeout(() => {
                     // 각 슬라이드 아이템의 left에 offset 적용
                     slideItems.forEach((i) => {
-                        // i.setAttribute("style", `transition: ${0}s; left: ${-offset}px`);
-                        i.setAttribute("style", `transition: ${0.15}s; left: ${-offset}px`);
+                        // i.setAttribute("style", `transition: ${0}s; left: \${-offset}px`);
+                        i.setAttribute("style", `transition: ${0.15}s; left: \${-offset}px`);
                     });
                 }, 0);
                 // // 슬라이드 이동 시 현재 활성화된 pagination 변경
@@ -160,7 +160,7 @@
                 const offset = slideWidth * currSlide;
                 // 각 슬라이드 아이템의 left에 offset 적용
                 slideItems.forEach((i) => {
-                    i.setAttribute("style", `left: ${-offset}px`);
+                    i.setAttribute("style", `left: \${-offset}px`);
                 });
                 // 슬라이드 이동 시 현재 활성화된 pagination 변경
                 paginationItems.forEach((i) => i.classList.remove("active"));
@@ -171,15 +171,15 @@
                 let offset = slideWidth * currSlide;
                 // 각 슬라이드 아이템의 left에 offset 적용
                 slideItems.forEach((i) => {
-                    i.setAttribute("style", `transition: ${0}s; left: ${-offset}px`);
+                    i.setAttribute("style", `transition: ${0}s; left: \${-offset}px`);
                 });
                 currSlide--;
                 offset = slideWidth * currSlide;
                 setTimeout(() => {
                     // 각 슬라이드 아이템의 left에 offset 적용
                     slideItems.forEach((i) => {
-                        // i.setAttribute("style", `transition: ${0}s; left: ${-offset}px`);
-                        i.setAttribute("style", `transition: ${0.15}s; left: ${-offset}px`);
+                        // i.setAttribute("style", `transition: ${0}s; left: \${-offset}px`);
+                        i.setAttribute("style", `transition: ${0.15}s; left: \${-offset}px`);
                     });
                 }, 0);
                 // 슬라이드 이동 시 현재 활성화된 pagination 변경
@@ -214,7 +214,7 @@
                 const offset = slideWidth * currSlide;
                 // 각 슬라이드 아이템의 left에 offset 적용
                 slideItems.forEach((i) => {
-                    i.setAttribute("style", `left: ${-offset}px`);
+                    i.setAttribute("style", `left: \${-offset}px`);
                 });
                 // 슬라이드 이동 시 현재 활성화된 pagination 변경
                 paginationItems.forEach((i) => i.classList.remove("active"));
