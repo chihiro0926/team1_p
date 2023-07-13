@@ -19,7 +19,8 @@
 			address2,
 			phone_num,
 			email,
-			join_date)
+			join_date,
+			grade)
 		values (
 			user_list_seq.nextval,
 			#{id},
@@ -31,7 +32,8 @@
 			#{address2},
 			#{phoneNum},
 			#{mail},
-			sysdate)
+			sysdate,
+			default)
 	</insert>
 
 	<!-- 아이디 중복 체크 -->
@@ -67,7 +69,8 @@
 			address2,
 			phone_num as phoneNum,
 			email as mail,
-			join_date
+			join_date,
+			grade
 		from user_list
 		where id = #{id} and pw = #{psw}
 			
@@ -85,7 +88,8 @@
 			address2,
 			phone_num as phoneNum,
 			email as mail,
-			join_date
+			join_date,
+			grade
 		from user_list
 		where user_id = #{user_id} 
 	</select>

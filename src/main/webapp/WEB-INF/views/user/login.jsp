@@ -13,7 +13,7 @@
 	<section class="login-form">
         <!-- 이미지 삽입 -->
         <div class="logo" style="text-align: center; margin-top: 2em;">
-            <a href="">
+            <a href="/mainPage">
                 <img src="/image/logo1.png" alt="example image" style="width: 200px;">
             </a>
         </div>
