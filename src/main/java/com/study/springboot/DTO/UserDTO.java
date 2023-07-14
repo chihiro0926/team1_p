@@ -18,11 +18,5 @@ public class UserDTO {
 	private String phoneNum;
 	private Date join_date;
 	private String contact;
-<<<<<<< HEAD
-=======
 	private int grade;
-	
-	
-	
->>>>>>> parent of 9067b42 (230714 중간 commit)
 }
