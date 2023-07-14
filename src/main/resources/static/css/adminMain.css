@@ -4,9 +4,9 @@
 /* 	font-size: 0; */
 /* } */
 
-div{
-	border: 1px solid red;
-}
+/* div{ */
+/* 	border: 1px solid red; */
+/* } */
 
 header{
 	width: 100%;
@@ -56,11 +56,13 @@ header .logo{
 
 #content {
 	width: 100%;
-	
+	margin-top: 40px;
+	height: 600px;
 }
 
 #content #title {
 	text-align: center;
+	margin-bottom: 40px;
 }
 
 #table {
@@ -69,7 +71,7 @@ header .logo{
 	text-align: center;
 }
 
-body {
+section {
   color: #666;
   font: 14px/24px "Open Sans", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", Sans-Serif;
 }
@@ -80,12 +82,12 @@ table {
 }
 th,
 td {
-  padding: 6px 15px;
+  padding: 6px 10px;
 }
 th {
   background: #42444e;
   color: #fff;
-  text-align: left;
+  text-align: center;
 }
 tr:first-child th:first-child {
   border-top-left-radius: 6px;
@@ -108,4 +110,15 @@ tr:last-child td:first-child {
 }
 tr:last-child td:last-child {
   border-bottom-right-radius: 6px;
+}
+
+
+.pageNumber{
+	margin-top: 40px;
+	text-align: center;
+}
+
+.pageNumber a {
+	font-size: 18px;
+	margin: 0 3px;
 }

@@ -19,7 +19,4 @@ public class UserDTO {
 	private Date join_date;
 	private String contact;
 	private int grade;
-	
-	
-	
 }

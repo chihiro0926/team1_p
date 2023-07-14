@@ -10,19 +10,21 @@
 
 </head>
 <body>
-	<header style="border:1px solid red;">
-		<div class="header_logo_area">
-			<a href=""><img class="logo" alt="logo" src="/image/logo2.png"></a>
+	<section id="header">
+		<header style="border:1px solid red;">
+			<div class="header_logo_area">
+				<a href=""><img class="logo" alt="logo" src="/image/logo2.png"></a>
+			</div>
+		</header>
+		<div class="top_list">
+			<ul>
+				<li><a href="">회원목록 조회</a></li>
+				<li><a href="">상품 등록</a></li>
+				<li><a href="">상품목록 조회</a></li>
+				<li><a href="">홈으로</a></li>
+			</ul>
 		</div>
-	</header>
-	<div class="top_list">
-		<ul>
-			<li><a href="">회원목록 조회</a></li>
-			<li><a href="">상품 등록</a></li>
-			<li><a href="">상품목록 조회</a></li>
-			<li><a href="">홈으로</a></li>
-		</ul>
-	</div>
+	</section>
 	
 	<section id=content>
 		<div id="title">
@@ -38,6 +40,7 @@
 						<th>생일</th>
 						<th>닉네임</th>
 						<th>주소</th>
+						<th>상세주소</th>
 						<th>전화번호</th>
 						<th>이메일</th>
 						<th>가입날짜</th>
@@ -52,18 +55,31 @@
 						<td>남태현</td>
 						<td>1999-01-05</td>
 						<td>김휴먼</td>
-						<td>경기도 수원시 권선구 금호로 45 102동 801호</td>
+						<td>경기도 수원시 권선구 금호로 45</td>
+						<td>102동 801호</td>
 						<td>010-5568-4504</td>
 						<td>nth4504@naver.com</td>
 						<td>2023-07-12</td>
 						<td><a href=""><input type="button" value="수정"></a></td>
 						<td><a href=""><input type="button" value="삭제"></a></td>
 					</tr>
+<!-- 					<tr> -->
+<!-- 						<td colspan='11'>가입한 회원이 없습니다.</td> -->
+<!-- 					</tr> -->
 				</tbody>
 				
 			</table>
 		</div>
+		
+		<div class="pageNumber">
+			<a href="">[이전]</a>
+			<a href="">1</a>
+			<a href="">2</a>
+			<a href="">3</a>
+			<a href="">[다음]</a>
+		</div>
 	</section>
-
 </body>
+<jsp:include page="../footer/footer.jsp"/>
+
 </html>
