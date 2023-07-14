@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.study.springboot.DTO.UserDTO;
 import com.study.springboot.dao.AdminDAO;
 
-public class AdminServicdImpl implements AdminService{
+public class Admin2ServiceImpl implements Admin2Service{
 
 	@Autowired
 	AdminDAO adminDAO;

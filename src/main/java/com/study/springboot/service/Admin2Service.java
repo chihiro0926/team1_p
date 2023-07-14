@@ -4,7 +4,7 @@ import java.util.Map;
 
 import com.study.springboot.DTO.UserDTO;
 
-public interface AdminService {
+public interface Admin2Service {
 
 	Map userList(UserDTO userDTO);
 	
