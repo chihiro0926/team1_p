@@ -8,7 +8,6 @@
 <meta charset="UTF-8">
 <title>회원정보확인</title>
 <link rel="stylesheet" href="/header/blackheader.css">
-<link rel="stylesheet" href="/css/footer_style.css">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet"> 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -21,7 +20,7 @@
             border: 1px solid red;
         } */
         #all_section {
-            width: 100%;
+            width: 1280px;
             height: auto;
         }
         #top_section {
@@ -32,7 +31,7 @@
         #top_section .user_img {
             width: 10em;
             height: auto;
-            margin-top: 1em;
+            margin-top: 2.5em;
             margin-left: 6em;
             display: inline-block;
             background-color: white;
@@ -48,7 +47,7 @@
             text-align: center;
             vertical-align: top;
             display: inline-block;
-            margin-top: 3em;
+            margin-top: 4em;
             margin-left: 2em;
             margin-right: 4em;
             width: auto;
@@ -74,7 +73,7 @@
             text-decoration: none;
         }
         #top_section .user_point {
-            margin-top: 4em;
+            margin-top: 5em;
             display: inline-block;
             width: auto;
             vertical-align: top;
@@ -192,9 +191,85 @@
         }
 </style>
 </head>
+<header>
+
+        <div id="header">
+            <div id="logo2">
+                <div><a href=""><img src="/header/logo2.png" alt=""></a></div>
+            </div>
+            <div id="search2">
+                <input type="text" placeholder="여름 준비, 지금부터!">
+                <!--
+                    1. 여름 준비, 지금부터!
+                    2. 올 여름, 나의 휴가패션은?
+                    3. 우리 아이, 유치원 인싸템
+                    4. 인싸들의 OOTD
+                    5. 지름신 강림! flex템!
+                -->
+                
+                <a href=""><img src="/header/search_regular_icon.png" alt="" style="width: 2em;"></a>
+            </div>
+        <div id="logout">
+            <div><a href="">로그아웃</a></div>
+            <div><a>ㅣ</a></div>
+            <div><a href="">마이페이지</a></div>
+            <div><a>ㅣ</a></div>
+            <div><a href="">장바구니</a></div>
+        </div>
+        
+        
+        <div id="menu2">
+            <div><a href="" class="best_menu2">BEST</a></div>
+            <div><a href="" class="women_menu2">WOMEN</a></div>
+            <div><a href="" class="men_menu2">MEN</a></div>
+            <div><a href="" class="kids_menu2">KIDS</a></div>
+            <div><a href="" class="beauty_menu2">BEAUTY</a></div>
+        </div>
+        
+        
+        <div id="all2">
+            <div id="mid2">
+                <div id="best2">
+                    <div><a href="">상의</a></div>
+                    <div><a href="">하의</a></div>
+                    <div><a href="">아우터</a></div>
+                    <div><a href="">니트웨어</a></div>
+                    <div><a href="">이너웨어</a></div>
+                </div>
+                <div id="women2">
+                    <div><a href="">상의</a></div>
+                    <div><a href="">원피스</a></div>
+                    <div><a href="">바지</a></div>
+                    <div><a href="">스커트</a></div>
+                    <div><a href="">아우터</a></div>
+                    <div><a href="">니트웨어</a></div>
+                    <div><a href="">이너웨어</a></div>
+                </div>
+                <div id="men2">
+                    <div><a href="">상의</a></div>
+                    <div><a href="">하의</a></div>
+                    <div><a href="">아우터</a></div>
+                    <div><a href="">니트웨어</a></div>
+                    <div><a href="">이너웨어</a></div>
+                </div>
+                <div id="kids2" style="left: -3.3em;">
+                    <div><a href="">의류</a></div>
+                    <div><a href="">신발</a></div>
+                    <div><a href="">가방</a></div>
+                </div>
+                <div id="beauty2" style="left: -2.5em;">
+                    <div><a href="">스킨케어</a></div>
+                    <div><a href="">메이크업</a></div>
+                    <div><a href="">향수</a></div>
+                    <div><a href="">바디케어</a></div>
+                    <div><a href="">헤어케어</a></div>
+                    <div><a href="">남성뷰티</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
 <body>
-<!-- blackHeader영역 -->
-<jsp:include page="../header/blackHeader.jsp" />
 	<div id="all_section">
         <div id="top_section">
             <div class="user_img">
@@ -287,9 +362,6 @@
             </form>
         </div>
     </div>
-    
-    <!-- footer영역 -->
-    <jsp:include page="../footer/footer.jsp"/>
     <script src="../js/userInfoEdit.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script>

@@ -17,7 +17,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
-public class UserController {
+public class MypageController {
 //	UserDTO userDTO = new UserDTO();
 	
 	@Autowired
@@ -276,24 +276,23 @@ public class UserController {
 		UserDTO dto = (UserDTO) map.get("dto");
 		
 		System.out.println("count : "+ count);
+		System.out.println("dto : "+ dto);
 		
 		if( count != 0 ) {
 			// 계정 있음
-			System.out.println("로그인 한 회원 id : "+ dto.getId());
-			System.out.println("관리자 여부 : "+ dto.getGrade());
-			
 			HttpSession session = request.getSession();
-			
 			session.setAttribute("login", "ok");
-			session.setAttribute("user_grade", dto.getGrade());
-			session.setAttribute("user_id", dto.getUser_id());
+//			session.setAttribute("userDTO", dto);
+			if( dto != null ) {
+				session.setAttribute("user_id", dto.getUser_id());
+			}
 		} else {
 			// 계정 없음
 			model.addAttribute("msg", "아이디 및 비밀번호를 확인해주세요");
 			return "user/login";
 		}
 		
-		return "redirect:/mainPage";
+		return "redirect:/userInfoEdit";
 	}
 	
 	@RequestMapping("/find")
@@ -550,17 +549,6 @@ public class UserController {
 		System.out.println("회원 탈퇴 결과 : "+ result);
 		
 		return "user/login";
-	}
-	
-	@RequestMapping("/logOut")
-	public String logOut(
-			HttpServletRequest request
-	) {
-		HttpSession session = request.getSession();
-		
-		session.invalidate();
-		
-		return "redirect:/mainPage";
 	}
 	
 	

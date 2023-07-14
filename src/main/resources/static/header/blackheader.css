@@ -22,7 +22,7 @@ header header{
 
 header #header{
     width: 100%;
-/*     height: 5em; */
+    height: 5em;
     background-color: black;
     z-index: 100;
 }
@@ -41,7 +41,7 @@ header #search2 input{
     top: -1.8em;
     background-color: black;
     z-index: 99;
-    color: white;
+    
 }
 header input:focus{
     outline: none;
@@ -72,7 +72,7 @@ header #logout div{
 }
 
 header #logout a{
-    left: 72em;
+    left: 75em;
     top: -6.5em;
     font-weight: bold;
     color: white;
@@ -106,11 +106,10 @@ header #mid2{
     text-align: center;
     position: fixed;
     z-index: 99;
-    background-color: white;
 }
 
 header #mid2 div{
-    left: -4.3em;
+    left: -1.9em;
     padding: 0.5em 0.7em;
     font-family:  'NanumSquareLight';
     vertical-align: top;
@@ -118,8 +117,8 @@ header #mid2 div{
 
 header #mid2[id]{
     vertical-align: top;
-    top: 8em;
-/*     left: -5.5em; */
+    top: 7.2em;
+    left: -5.5em;
 }
 
 header #mid2 a{
@@ -185,14 +184,14 @@ header #mid2 #beauty2:hover{
     background-color: white;
 }
 
-header.shrink {
+header header.shrink {
   height: 60px;
 }
 
-header.shrink #logo2 img {
+header header.shrink #logo2 img {
   height: 40px;
 }
 
-header.shrink #search2 {
+header header.shrink #search2 {
   padding-top: 5px;
 }
