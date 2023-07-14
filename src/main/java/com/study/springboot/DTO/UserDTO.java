@@ -18,5 +18,8 @@ public class UserDTO {
 	private String phoneNum;
 	private Date join_date;
 	private String contact;
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of efb3e9a (test를 위해 grade 잠시 삭제)
 }
