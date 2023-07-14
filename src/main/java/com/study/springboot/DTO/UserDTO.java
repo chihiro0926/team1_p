@@ -18,7 +18,6 @@ public class UserDTO {
 	private String phoneNum;
 	private Date join_date;
 	private String contact;
-	private int grade;
 	
 	
 	
